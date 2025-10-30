@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>🔍 Klasifikasi Kualitas Fitness Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="glass-card">
+      <h2>🔍 Prediksi Kualitas Perangkat Kebugaran</h2>
+      <form method="POST" action="/predict">
+        <div class="form-group">
+          <label>Merek</label>
+          <select name="brand" required>
+            <option value="Xiaomi">Xiaomi</option>
+            <option value="FitBit">FitBit</option>
+            <option value="realme">realme</option>
+            <option value="Huawei">Huawei</option>
+            <option value="Apple">Apple</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Garmin">Garmin</option>
+            <option value="OnePlus">OnePlus</option>
+            <option value="Noise">Noise</option>
+            <option value="boAt">boAt</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tipe Perangkat</label>
+          <select name="device_type" required>
+            <option value="FitnessBand">Fitness Band</option>
+            <option value="Smartwatch">Smartwatch</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Harga Jual (Rp)</label>
+          <input type="number" name="selling_price" min="0" required>
+        </div>
+        <div class="form-group">
+          <label>Harga Asli (Rp)</label>
+          <input type="number" name="original_price" min="0" required>
+        </div>
+        <div class="form-group">
+          <label>Daya Tahan Baterai (hari)</label>
+          <input type="number" name="battery_life" min="0" step="0.1" required>
+        </div>
+        <div class="form-group">
+          <label>Jumlah Ulasan</label>
+          <input type="number" name="reviews" min="0" step="1" required>
+        </div>
+        <div class="form-group">
+          <label>Tipe Layar</label>
+          <select name="display" required>
+            <option value="AMOLED Display">AMOLED</option>
+            <option value="OLED Display">OLED</option>
+            <option value="LCD Display">LCD</option>
+            <option value="TFT-LCD Display">TFT-LCD</option>
+            <option value="PMOLED Display">PMOLED</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Bahan Tali</label>
+          <select name="strap" required>
+            <option value="Silicone">Silicone</option>
+            <option value="Thermoplastic polyurethane">TPU</option>
+            <option value="Leather">Leather</option>
+            <option value="Plastic">Plastic</option>
+            <option value="Elastomer">Elastomer</option>
+            <option value="Nylon">Nylon</option>
+            <option value="Rubber">Rubber</option>
+            <option value="Stainless Steel">Stainless Steel</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Prediksi Kualitas</button>
+      </form>
+    </div>
+
+    <div class="glass-card">
+      <h3>📊 Visualisasi Model Decision Tree</h3>
+      <div class="visualization-grid">
+        <img src="{{ url_for('static', filename='target_distribution.png') }}" alt="Target">
+        <img src="{{ url_for('static', filename='confusion_matrix.png') }}" alt="CM">
+        <img src="{{ url_for('static', filename='roc_curve.png') }}" alt="ROC">
+        <img src="{{ url_for('static', filename='feature_importance.png') }}" alt="FI">
+        <img src="{{ url_for('static', filename='decision_tree.png') }}" alt="Tree">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
